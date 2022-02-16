@@ -3,7 +3,6 @@ package io.pjmadden.epldashboard.data;
 public class Matchinput {
     
     private String id;
-    private String season;
     private String homeTeam;//
     private String awayTeam;//
     private String fullTimeHomeTeamGoals;
@@ -34,12 +33,6 @@ public class Matchinput {
     }
     public void setId(String id) {
         this.id = id;
-    }
-    public String getSeason() {
-        return season;
-    }
-    public void setSeason(String season) {
-        this.season = season;
     }
     public String getHomeTeam() {
         return homeTeam;

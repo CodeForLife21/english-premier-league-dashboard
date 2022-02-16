@@ -3,11 +3,14 @@ package io.pjmadden.epldashboard.model;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-// class called Match which is going to be the output that will go to the Database
-public class Match {
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+// class called Match which is going to be the output that will go to the Database
+@Entity
+public class Match {
+    @Id
     private long id;
-    private LocalDate season;
     private String homeTeam;
     private String awayTeam;
     private int fullTimeHomeTeamGoals;
@@ -38,14 +41,6 @@ public class Match {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public LocalDate getSeason() {
-        return season;
-    }
-
-    public void setSeason(LocalDate season) {
-        this.season = season;
     }
 
     public String getHomeTeam() {

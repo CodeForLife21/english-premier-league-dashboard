@@ -28,7 +28,6 @@ public class MatchDataProcessor implements ItemProcessor<Matchinput, Match> {
         // Matchinput class the data is stored as String coming from CSV, hence some
         // data needs to be converted
         match.setId(Long.parseLong(matchinput.getId()));
-        match.setSeason(LocalDate.parse(matchinput.getSeason()));
         match.setHomeTeam(matchinput.getHomeTeam());
         match.setAwayTeam(matchinput.getAwayTeam());
         match.setFullTimeHomeTeamGoals(Integer.parseInt(matchinput.getFullTimeHomeTeamGoals()));
