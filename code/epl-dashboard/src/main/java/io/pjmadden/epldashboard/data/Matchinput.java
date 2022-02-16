@@ -1,14 +1,14 @@
 package io.pjmadden.epldashboard.data;
-
+// Match Input class which matches the input from the CSV file
 public class Matchinput {
     
     private String id;
     private String season;
-    private String homeTeam;
-    private String awayTeam;
+    private String homeTeam;//
+    private String awayTeam;//
     private String fullTimeHomeTeamGoals;
     private String fullTimeAwayTeamGoals;
-    private String fullTimeResult;
+    private String fullTimeResult;//
     private String halfTimeHomeTeamGoals;
     private String halfTimeAwayTeamGoals;
     private String halfTimeResult;
