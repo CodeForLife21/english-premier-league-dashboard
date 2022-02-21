@@ -25,15 +25,18 @@ import io.pjmadden.epldashboard.model.Match;
 @EnableBatchProcessing
 public class BatchConfig {
 
+
     private final String[] FIELD_NAMES = new String[] {
 
-            "id", "HomeTeam", "AwayTeam", "FullTimeHomeTeamGoals", "FullTimeAwayTeamGoals", "FullTimeResult",
-            "HalfTimeHomeTeamGoals", "HalfTimeAwayTeamGoals", "HalfTimeResult", "Referee",
-            "HomeTeamShots", "AwayTeamShots", "HomeTeamShotsOnTarget", "AwayTeamShotsOnTarget", "HomeTeamCorners",
-            "AwayTeamCorners", "HomeTeamFoulsCommitted", "AwayTeamFoulsCommited", "HomeTeamYellowCards",
-            "AwayTeamYellowCards", "HomeTeamRedCards", "AwayTeamRedCards", "Date", "Time"
+            "id", "home_team", "away_team", "full_time_home_team_goals", "full_time_away_team_goals", "full_time_result",
+            "half_time_home_team_goals", "half_time_away_team_goals", "half_time_result", "referee",
+            "home_team_shots", "away_team_shots", "home_team_shots_on_target", "away_team_shots_on_target", "home_team_corners",
+            "away_team_corners", "home_team_fouls_committed", "away_teams_fouls_commited", "home_team_yellow_cards",
+            "away_team_yellow_cards", "home_team_red_cards", "away_team_red_cards", "date", "time"
 
     };
+
+
 
     @Autowired
     public JobBuilderFactory jobBuilderFactory;
@@ -41,7 +44,7 @@ public class BatchConfig {
     @Autowired
     public StepBuilderFactory stepBuilderFactory;
 
-    // dealing with the input part
+    // dealing with the input 
     @Bean
     public FlatFileItemReader<Matchinput> reader() {
         return new FlatFileItemReaderBuilder<Matchinput>()
@@ -63,6 +66,8 @@ public class BatchConfig {
     public MatchDataProcessor processor() {
         return new MatchDataProcessor();
     }
+
+   
 
     @Bean
     public JdbcBatchItemWriter<Match> writer(DataSource dataSource) {
@@ -86,12 +91,13 @@ public class BatchConfig {
 
     @Bean
     public Step step1(JdbcBatchItemWriter<Match> writer) {
-        return stepBuilderFactory.get("step1")
-                .<Matchinput, Match>chunk(10)
-                .reader(reader())
-                .processor(processor())
-                .writer(writer)
-                .build();
+        return stepBuilderFactory
+            .get("step1")
+            .<Matchinput, Match>chunk(10)
+            .reader(reader())
+            .processor(processor())
+            .writer(writer)
+            .build();
     }
 
 }
